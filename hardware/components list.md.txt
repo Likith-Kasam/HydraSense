@@ -11,8 +11,10 @@ Bill of Materials (BOM) – HydraSense TRL-8 Project
 | 7    | 4.7kΩ Resistor      | 1        | For DS18B20 pull-up                       | -                      | ₹5                 | Already owned    |
 | 8    | USB Cable (Micro USB / Type-C) | 1    | For uploading code to ESP32        | -                      | ₹50                | Sky Electro Tech |
 | 9    | Thermo-Hygrometer   | 1        | Temperature, Humidity,                    | 288CTH-2               | ₹350               | Sky Electro Tech |
+| 10   | Li-Ion Battery      | 1        | External Battery                          | -                      | ₹50                | Sky Electro Tech |
+| 11   | DC-DC Buck Converter| 1        | Bring down to 5V                          | LM2596                 | ₹50                | Sky Electro Tech |
 
-Total Estimated Cost: ₹2620 (Including Taxes)
+Total Cost: ₹2620 (Including Taxes-approx~400)
 
 
 
