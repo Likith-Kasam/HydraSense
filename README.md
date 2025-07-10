@@ -51,7 +51,7 @@ To achieve TRL-8, we performed the following:
   - Data filtering and compensation algorithms
 - Data validation:
   - Calibration curves and correction lookup tables
-  - 48-hour drift logs and cross-sensor consistency
+  - 24-hour drift logs and cross-sensor consistency
 - Protective enhancements:
   - Hydrophobic membranes to stabilize readings
 
