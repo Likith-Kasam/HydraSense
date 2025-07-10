@@ -1,0 +1,6 @@
+Sensor	Microcontroller pin mapping
+DS18B20 ->	D15 (GPIO15)
+DHT22   ->	D04 (GPIO04)
+BME680 (SDA pin) ->	D21 (GPIO21)
+BME680 (SCL pin) ->	D22 (GPIO22)
+
