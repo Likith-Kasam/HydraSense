@@ -1,0 +1,18 @@
+Bill of Materials (BOM) – HydraSense TRL-8 Project
+
+| S.No | Component           | Quantity | Description                               | Part Number / Model    | Approx. Cost (INR) | Source           |
+|------|---------------------|----------|-------------------------------------------|------------------------|--------------------|------------------|
+| 1    | ESP32 Dev Module    | 1        | Wi-Fi + Bluetooth Microcontroller         | DOIT ESP32             | ₹300               | Sky Electro Tech |
+| 2    | DHT22 Sensor        | 1        | Temperature + Humidity Sensor (digital)   | DHT22 / AM2302         | ₹120               | Sky Electro Tech |
+| 3    | DS18B20 Sensor      | 1        | Waterproof temperature sensor (1-Wire)    | DS18B20                | ₹65                | Sky Electro Tech |
+| 4    | BME680 Sensor       | 1        | Temperature, Humidity, Pressure, Gas      | GY-BME680              | ₹1075              | Sky Electro Tech |
+| 5    | Breadboard          | 1        | 830-point solderless                      | -                      | ₹100               | Already Owned    |
+| 6    | Jumper Wires (M-M, F-F, M-F)| 1 pack   | Connecting sensors to ESP32       | -                      | ₹90                | Sky Electro Tech |
+| 7    | 4.7kΩ Resistor      | 1        | For DS18B20 pull-up                       | -                      | ₹5                 | Already owned    |
+| 8    | USB Cable (Micro USB / Type-C) | 1    | For uploading code to ESP32        | -                      | ₹50                | Sky Electro Tech |
+| 9    | Thermo-Hygrometer   | 1        | Temperature, Humidity,                    | 288CTH-2               | ₹350               | Sky Electro Tech |
+
+Total Estimated Cost: ₹2620 (Including Taxes)
+
+
+
