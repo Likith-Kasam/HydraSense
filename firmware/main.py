@@ -2,8 +2,8 @@ import serial
 import time
 import csv
 
-# Replace 'COM6' with your ESP32 port (check Arduino > Tools > Port)
-SERIAL_PORT = 'COM6'
+
+SERIAL_PORT = 'COM6' # Use port suitable for  ESP32 (check Arduino > Tools > Port)
 BAUD_RATE = 115200
 CSV_FILE = 'sensor_data_again.csv'
 

@@ -4,7 +4,7 @@
 #define BLYNK_TEMPLATE_NAME "Temperature and Humidity Monitoring"
 #define BLYNK_AUTH_TOKEN "9wuen1NcyeiN8B6HaLYIvLrdgvR-AuK4"
 
-#define LED_BUILTIN 2  // Change this to your board’s onboard LED pin if needed
+#define LED_BUILTIN 2  // esp32 board led pin
 
 #define BLYNK_PRINT Serial
 
@@ -84,7 +84,7 @@ void sendSensorData() {
 void setup() {
   Serial.begin(115200);
 
-
+  // Check start for battery opperated mode
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH); // LED ON for 2 seconds = running
   delay(2000);
@@ -92,7 +92,7 @@ void setup() {
 
   Serial.begin(115200);
   Blynk.begin(auth, ssid, pass);
-  // other setup code...
+  
 
 
   // Start Blynk & sensors
