@@ -12,7 +12,7 @@ def main():
         ser = serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1)
         print(f"Connected to {SERIAL_PORT} at {BAUD_RATE} baud.")
     except:
-        print(f"❌ Could not connect to {SERIAL_PORT}")
+        print(f" Could not connect to {SERIAL_PORT}")
         return
 
     with open(CSV_FILE, mode='w', newline='') as file:
