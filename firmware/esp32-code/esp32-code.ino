@@ -42,7 +42,7 @@ BlynkTimer timer;
 
 // Function to read and send sensor data to Blynk
 void sendSensorData() {
-  // --- DHT22 ---
+  // DHT22
   float dht_temp = dht.readTemperature();
   float dht_hum = dht.readHumidity();
   if (!isnan(dht_temp) && !isnan(dht_hum)) {
@@ -50,7 +50,7 @@ void sendSensorData() {
     Blynk.virtualWrite(V1, dht_hum);
   }
 
-  // --- BME680 ---
+  // BME680
   if (bme.performReading()) {
     float bme_temp = bme.temperature;
     float bme_hum = bme.humidity;
@@ -58,14 +58,14 @@ void sendSensorData() {
     Blynk.virtualWrite(V4, bme_hum);
   }
 
-  // --- DS18B20 ---
+  // DS18B20
   ds18b20.requestTemperatures();
   float ds_temp = ds18b20.getTempCByIndex(0);
   if (ds_temp != DEVICE_DISCONNECTED_C) {
     Blynk.virtualWrite(V2, ds_temp);
   }
 
-  // --- Debug Output ---
+  // Debug Output
   Serial.print("DHT22 Temp: "); Serial.print(dht_temp); Serial.print(" °C  ");
   Serial.print("Humidity: "); Serial.println(dht_hum);
 

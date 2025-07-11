@@ -7,14 +7,16 @@ Bill of Materials (BOM) – HydraSense TRL-8 Project
 | 3    | DS18B20 Sensor      | 1        | Waterproof temperature sensor (1-Wire)    | DS18B20                | ₹65                | Sky Electro Tech |
 | 4    | BME680 Sensor       | 1        | Temperature, Humidity, Pressure, Gas      | GY-BME680              | ₹1075              | Sky Electro Tech |
 | 5    | Breadboard          | 1        | 830-point solderless                      | -                      | ₹100               | Already Owned    |
-| 6    | Jumper Wires (M-M, F-F, M-F)| 1 pack   | Connecting sensors to ESP32       | -                      | ₹90                | Sky Electro Tech |
+| 6    | Jumper Wires	     | 1 pack   | Connecting sensors to ESP32               | -                      | ₹90                | Sky Electro Tech |	 	(M-M, F-F, M-F)      
 | 7    | 4.7kΩ Resistor      | 1        | For DS18B20 pull-up                       | -                      | ₹5                 | Already owned    |
-| 8    | USB Cable (Micro USB / Type-C) | 1    | For uploading code to ESP32        | -                      | ₹50                | Sky Electro Tech |
+| 8    | USB Cable 	     | 1        | For uploading code to ESP32               | -                      | ₹50                | Sky Electro Tech |
+	(Micro USB / Type-C) 
 | 9    | Thermo-Hygrometer   | 1        | Temperature, Humidity,                    | 288CTH-2               | ₹350               | Sky Electro Tech |
-| 10   | Li-Ion Battery      | 1        | External Battery                          | -                      | ₹50                | Sky Electro Tech |
+| 10   | Li-Ion Battery      | 1        | External Battery                          | -                      | ₹90                | Sky Electro Tech |
+	& Holder             
 | 11   | DC-DC Buck Converter| 1        | Bring down to 5V                          | LM2596                 | ₹50                | Sky Electro Tech |
 
-Total Cost: ₹2620 (Including Taxes-approx~400)
+Total Cost: ₹2660 (Including Taxes-approx~400)
 
 
 
