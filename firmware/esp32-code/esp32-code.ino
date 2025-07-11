@@ -109,8 +109,8 @@ void setup() {
   bme.setTemperatureOversampling(BME680_OS_8X);
   bme.setHumidityOversampling(BME680_OS_2X);
 
-  // Start periodic updates every 20 seconds
-  timer.setInterval(20000L, sendSensorData);
+  // Start periodic updates every 3 seconds
+  timer.setInterval(3000L, sendSensorData);
 }
 
 void loop() {
