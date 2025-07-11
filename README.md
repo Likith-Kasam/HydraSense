@@ -50,7 +50,7 @@ Data Logging, Graphing & Repo
 - DS18B20 sensor (connected to GPIO 15 with 4.7kΩ pull-up resistor)
 - BME680 sensor (I2C: SDA = GPIO 21, SCL = GPIO 22)
 - Breadboard, jumper wires, USB cable
-- Basic materials: salt (NaCl), silica gel packets, plastic bottles, cooler (fan)
+- Basic materials: salt (NaCl), silica gel packets, plastic container, thermos bottles, cooler (fan)
 
 ---
 
