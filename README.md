@@ -100,15 +100,14 @@ Cloud Monitoring via Blynk
 
 ### *Indian Sensor Replacements*  
 
-|  *Original Sensor*  | *Indian Alternative* |    *Manufacturer*      |      *Key Features*           | *Where to Buy* |
-|--------------------|----------------------|------------------------|-------------------------------|----------------|
-
-|DHT22(Temp/Humidity)| SHT31-D(I2C)         | Enviro Solutions India | ±2% RH, ±0.2°C, I2C interface | [Robu.in](https://robu.in/) /|
-												       [ElectronicsComp](https://www.electronicscomp.com/)|
-|DS18B20(Temp)       | PT100 RTD +          | Raghav Industries      | High-accuracy,industrial-grade| [Tessol India](https://www.tessol.in/) |
-		       Signal Conditioner
-|BME680              |SEN54(Sensirion-based)| Enviro Solutions India |Temp, Humidity, VOC, PM2.5/PM10| [ProtoCentral](https://protocentral.com/)|	
- (Temp/Humidity/Gas)													  
+| Category              | DHT22 (Temp/Humidity)   | DS18B20 (Temp)                  | BME680 (Temp/Humidity/Gas)      |
+|-----------------------|-------------------------|---------------------------------|---------------------------------|
+| Indian Alternative    | SHT31-D (I2C)           | PT100 RTD + Signal Conditioner  | SEN54 (Sensirion-based)         |
+| Manufacturer          | Enviro Solutions India  | Raghav Industries               | Enviro Solutions India          |
+| Key Features          | ±2% RH, ±0.2°C, I2C     | High-accuracy, industrial-grade | Temp, Humidity, VOC, PM2.5/PM10 |
+| Where to Buy          | Robu.in, ElectronicsComp| Tessol India                    | ProtoCentral                    |
+                      |
+												  
 
 ---
 
