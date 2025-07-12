@@ -98,4 +98,34 @@ Cloud Monitoring via Blynk
   - Microsoft Excel used for plotting and analysis of time vs RH/temp graphs
   - Simultaneous cloud monitoring via Blynk mobile/desktop app
 
+### *Indian Sensor Replacements*  
+
+|  *Original Sensor*  | *Indian Alternative* |    *Manufacturer*      |      *Key Features*           | *Where to Buy* |
+|--------------------|----------------------|------------------------|-------------------------------|----------------|
+
+|DHT22(Temp/Humidity)| SHT31-D(I2C)         | Enviro Solutions India | ±2% RH, ±0.2°C, I2C interface | [Robu.in](https://robu.in/) /|
+												       [ElectronicsComp](https://www.electronicscomp.com/)|
+|DS18B20(Temp)       | PT100 RTD +          | Raghav Industries      | High-accuracy,industrial-grade| [Tessol India](https://www.tessol.in/) |
+		       Signal Conditioner
+|BME680              |SEN54(Sensirion-based)| Enviro Solutions India |Temp, Humidity, VOC, PM2.5/PM10| [ProtoCentral](https://protocentral.com/)|	
+ (Temp/Humidity/Gas)													  
+
+---
+
+### *Why These Alternatives?*
+1. *SHT31-D (Replacement for DHT22)*  
+   - More accurate (±2% RH vs DHT22’s ±5%)  
+   - I2C interface (better than DHT22’s single-wire)  
+   - Made by *Sensirion*, assembled in India  
+
+2. *PT100 RTD (Replacement for DS18B20)*  
+   - Higher accuracy (±0.1°C possible)  
+   - Industrial-grade reliability  
+   - Requires an ADC (ADS1115) but better for harsh environments  
+
+3. *SEN54 (Replacement for BME680)*  
+   - Adds *particulate matter (PM2.5/PM10)* sensing  
+   - Same Temp/Humidity accuracy as BME680  
+   - Made under license from *Sensirion (Swiss tech, Indian assembly)*
+
 ---
