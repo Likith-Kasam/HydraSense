@@ -106,9 +106,7 @@ Cloud Monitoring via Blynk
 | Manufacturer          | Enviro Solutions India  | Raghav Industries               | Enviro Solutions India          |
 | Key Features          | ±2% RH, ±0.2°C, I2C     | High-accuracy, industrial-grade | Temp, Humidity, VOC, PM2.5/PM10 |
 | Where to Buy          | Robu.in, ElectronicsComp| Tessol India                    | ProtoCentral                    |
-                      |
 												  
-
 ---
 
 ### *Why These Alternatives?*
