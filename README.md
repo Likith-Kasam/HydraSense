@@ -127,5 +127,50 @@ Cloud Monitoring via Blynk
    - Adds *particulate matter (PM2.5/PM10)* sensing  
    - Same Temp/Humidity accuracy as BME680  
    - Made under license from *Sensirion (Swiss tech, Indian assembly)*
+  
+###  *Future Proposals*
+
+### 1. *Integration with Indigenous Sensors*
+
+> Propose replacing DHT22 and DS18B20 with *Made-in-India sensors* (e.g., Sensironics, SHT318 equivalents) to support Atmanirbhar Bharat and reduce import dependency.
+
+* Compare performance, cost, and compatibility.
+* Help validate and promote Indian IoT hardware ecosystem.
+
+---
+
+### 2. *Real-Time Alerts & Decision System*
+
+> Add threshold-based *alerts or control systems* triggered by sensor readings (e.g., buzzer for high humidity, fan activation, or mobile notifications).
+
+* Extend the current Blynk setup to include smart rules.
+* Improve practicality in agriculture, home automation, or weather monitoring.
+
+---
+
+### 3. *Field Deployment & Weatherproof Enclosure*
+
+> Transition from lab tests to *outdoor field trials* by designing a weatherproof enclosure.
+
+* Use 3D-printed or IP65-rated boxes.
+* Power it with a *battery + solar module* for continuous off-grid operation.
+
+---
+
+### 4. *Machine Learning for Sensor Correction*
+
+> Use the reference sensor data to train a model that *auto-calibrates* low-cost sensors in software.
+
+* Use simple regression or ML techniques to predict corrected values.
+* Implement on-device (ESP32) or cloud-based correction pipeline.
+
+---
+
+### 5. *Multi-Node Sensor Network*
+
+> Deploy *multiple sensor nodes* in different rooms or locations and aggregate data centrally.
+
+* Use *ESP-NOW*, LoRa, or MQTT to transmit to a base station.
+* Useful for smart homes, greenhouses, and industry environments.
 
 ---
