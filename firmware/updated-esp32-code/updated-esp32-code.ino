@@ -38,7 +38,7 @@ Adafruit_BME680 bme;
 BlynkTimer timer;
 
 // Telegram-Bot Setup
-String botToken = "7658515110:AAHKwiabtbTb8RzNEarn1UF2XoxjhRIHvw8";
+String botToken = "your bot token";
 String chatId = "5117318279";
 
 // Thresholds
