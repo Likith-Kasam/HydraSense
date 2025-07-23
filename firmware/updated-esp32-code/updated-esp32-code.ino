@@ -37,7 +37,7 @@ Adafruit_BME680 bme;
 // Timer for Blynk
 BlynkTimer timer;
 
-// Telegram Bot Setup
+// Telegram-Bot Setup
 String botToken = "7658515110:AAHKwiabtbTb8RzNEarn1UF2XoxjhRIHvw8";
 String chatId = "5117318279";
 
@@ -116,7 +116,7 @@ void checkAndSendAlerts(float temp, float humidity) {
       tempInitialAlertSent = true;
     }
     if (shouldSendTempAlert) {
-      bool sent = sendTelegramMessage("🔥 Temp Alert: DS18B20 = " + String(temp, 1) + " °C (Threshold: " + String(TEMP_THRESHOLD, 1) + " °C)");
+      bool sent = sendTelegramMessage("Temp Alert: DS18B20 = " + String(temp, 1) + " °C (Threshold: " + String(TEMP_THRESHOLD, 1) + " °C)");
       if (sent) lastTempAlertTime = millis();
       delay(1000);
     }
@@ -132,7 +132,7 @@ void checkAndSendAlerts(float temp, float humidity) {
       humInitialAlertSent = true;
     }
     if (shouldSendHumAlert) {
-      bool sent = sendTelegramMessage("💧 Humidity Alert: BME680 = " + String(humidity, 1) + " % (Threshold: " + String(HUMIDITY_THRESHOLD, 1) + " %)");
+      bool sent = sendTelegramMessage("Humidity Alert: BME680 = " + String(humidity, 1) + " % (Threshold: " + String(HUMIDITY_THRESHOLD, 1) + " %)");
       if (sent) lastHumAlertTime = millis();
       delay(1000);
     }
@@ -175,9 +175,9 @@ void performInitialCheck() {
   float dht_hum = dht.readHumidity();
 
   if (!isnan(dht_temp) && !isnan(dht_hum)) {
-    sendTelegramMessage("✅ ESP32 online and monitoring");
+    sendTelegramMessage("ESP32 online and monitoring");
     delay(1000);
-    String msg = "📊 Current readings:\n🌡 Temp: " + String(dht_temp, 1) + "°C\n💧 Humidity: " + String(dht_hum, 1) + "%";
+    String msg = "Current readings:\n🌡 Temp: " + String(dht_temp, 1) + "°C\n Humidity: " + String(dht_hum, 1) + "%";
     sendTelegramMessage(msg);
     delay(1000);
     checkAndSendAlerts(dht_temp, dht_hum);
@@ -198,7 +198,7 @@ void setup() {
   ds18b20.begin();
 
   if (!bme.begin()) {
-    Serial.println("❌ BME680 not found");
+    Serial.println("BME680 not found");
   } else {
     bme.setTemperatureOversampling(BME680_OS_8X);
     bme.setHumidityOversampling(BME680_OS_2X);
