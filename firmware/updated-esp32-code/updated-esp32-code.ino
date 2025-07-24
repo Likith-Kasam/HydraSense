@@ -18,8 +18,8 @@
 
 // WiFi credentials
 char auth[] = BLYNK_AUTH_TOKEN;
-char ssid[] = "Oneplus Nord CE3 5G";
-char pass[] = "12345678";
+char ssid[] = "Iqoo 7";
+char pass[] = "123456789@";
 
 // DHT22 setup
 #define DHTPIN 4
@@ -37,20 +37,23 @@ Adafruit_BME680 bme;
 // Timer for Blynk
 BlynkTimer timer;
 
-// Telegram-Bot Setup
-String botToken = "your bot token";
+// Telegram Bot Setup
+String botToken = "7658515110:AAHKwiabtbTb8RzNEarn1UF2XoxjhRIHvw8";
 String chatId = "5117318279";
 
-// Thresholds
+// Thresholds for alerts
 const float TEMP_THRESHOLD = 20.0;
 const float HUMIDITY_THRESHOLD = 40.0;
+const float DHT_TEMP_THRESHOLD = 70.0;
 const unsigned long alertCooldown = 120000;  // 2 minutes
 
 // State variables
 unsigned long lastTempAlertTime = 0;
 unsigned long lastHumAlertTime = 0;
+unsigned long lastDHTTempAlertTime = 0;
 bool tempInitialAlertSent = false;
 bool humInitialAlertSent = false;
+bool dhtTempInitialAlertSent = false;
 bool systemInitialized = false;
 
 // URL encoding helper
@@ -77,7 +80,7 @@ String urlEncode(const String& str) {
   return encoded;
 }
 
-// Sends Telegram message (returns true if success)
+// Send Telegram message (returns true if success)
 bool sendTelegramMessage(String message) {
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
@@ -104,19 +107,19 @@ bool sendTelegramMessage(String message) {
   }
 }
 
-// Checks and send alerts
-void checkAndSendAlerts(float temp, float humidity) {
+// Check and send alerts
+void checkAndSendAlerts(float ds_temp, float bme_hum, float dht_temp) {
   unsigned long currentTime = millis();
 
-  // Temperature alert
-  if (temp > TEMP_THRESHOLD) {
+  // Temperature alert from DS18B20
+  if (ds_temp > TEMP_THRESHOLD) {
     bool shouldSendTempAlert = false;
     if (!tempInitialAlertSent || (currentTime - lastTempAlertTime > alertCooldown)) {
       shouldSendTempAlert = true;
       tempInitialAlertSent = true;
     }
     if (shouldSendTempAlert) {
-      bool sent = sendTelegramMessage("Temp Alert: DS18B20 = " + String(temp, 1) + " °C (Threshold: " + String(TEMP_THRESHOLD, 1) + " °C)");
+      bool sent = sendTelegramMessage("Temp Alert: DS18B20 = " + String(ds_temp, 1) + " °C (Threshold: " + String(TEMP_THRESHOLD, 1) + " °C)");
       if (sent) lastTempAlertTime = millis();
       delay(1000);
     }
@@ -124,27 +127,43 @@ void checkAndSendAlerts(float temp, float humidity) {
     tempInitialAlertSent = false;
   }
 
-  // Humidity alert
-  if (humidity > HUMIDITY_THRESHOLD) {
+  // Humidity alert from BME680
+  if (bme_hum > HUMIDITY_THRESHOLD) {
     bool shouldSendHumAlert = false;
     if (!humInitialAlertSent || (currentTime - lastHumAlertTime > alertCooldown)) {
       shouldSendHumAlert = true;
       humInitialAlertSent = true;
     }
     if (shouldSendHumAlert) {
-      bool sent = sendTelegramMessage("Humidity Alert: BME680 = " + String(humidity, 1) + " % (Threshold: " + String(HUMIDITY_THRESHOLD, 1) + " %)");
+      bool sent = sendTelegramMessage("Humidity Alert: BME680 = " + String(bme_hum, 1) + " % (Threshold: " + String(HUMIDITY_THRESHOLD, 1) + " %)");
       if (sent) lastHumAlertTime = millis();
       delay(1000);
     }
   } else {
     humInitialAlertSent = false;
   }
+
+  // DHT22 temperature alert
+  if (dht_temp > DHT_TEMP_THRESHOLD) {
+    bool shouldSendDHTTempAlert = false;
+    if (!dhtTempInitialAlertSent || (currentTime - lastDHTTempAlertTime > alertCooldown)) {
+      shouldSendDHTTempAlert = true;
+      dhtTempInitialAlertSent = true;
+    }
+    if (shouldSendDHTTempAlert) {
+      bool sent = sendTelegramMessage("⚠ DHT22 Temp Alert: " + String(dht_temp, 1) + " °C (Threshold: " + String(DHT_TEMP_THRESHOLD, 1) + " °C)");
+      if (sent) lastDHTTempAlertTime = millis();
+      delay(1000);
+    }
+  } else {
+    dhtTempInitialAlertSent = false;
+  }
 }
 
 // Read sensors and send to Blynk
 void sendSensorData() {
-  float dht_temp = dht.readTemperature();
-  float dht_hum = dht.readHumidity();
+  float dht_temp = dht.readTemperature()+0.53;
+  float dht_hum = dht.readHumidity()-2.27;
 
   ds18b20.requestTemperatures();
   float ds_temp = ds18b20.getTempCByIndex(0);
@@ -155,34 +174,41 @@ void sendSensorData() {
     bme_hum = bme.humidity;
   }
 
+  // Send all readings to Blynk
   if (!isnan(dht_temp)) Blynk.virtualWrite(V0, dht_temp);
   if (!isnan(dht_hum)) Blynk.virtualWrite(V1, dht_hum);
   if (ds_temp != DEVICE_DISCONNECTED_C) Blynk.virtualWrite(V2, ds_temp);
   if (!isnan(bme_temp)) Blynk.virtualWrite(V3, bme_temp);
   if (!isnan(bme_hum)) Blynk.virtualWrite(V4, bme_hum);
 
-  if (!isnan(ds_temp) && !isnan(bme_hum)) {
-    checkAndSendAlerts(ds_temp, bme_hum);
+  if (ds_temp != DEVICE_DISCONNECTED_C && !isnan(bme_hum) && !isnan(dht_temp)) {
+    checkAndSendAlerts(ds_temp, bme_hum, dht_temp);
   } else {
-    Serial.println("⚠ DS18B20 readings invalid");
+    Serial.println("⚠ DS18B20, DHT22 or BME680 reading invalid");
   }
 }
 
-// First-time check and status alert
+// First-time status alert
 void performInitialCheck() {
   delay(2000);
-  float dht_temp = dht.readTemperature();
-  float dht_hum = dht.readHumidity();
+  ds18b20.requestTemperatures();
+  float ds_temp = ds18b20.getTempCByIndex(0);
 
-  if (!isnan(dht_temp) && !isnan(dht_hum)) {
-    sendTelegramMessage("ESP32 online and monitoring");
+  float bme_hum = NAN;
+  if (bme.performReading()) {
+    bme_hum = bme.humidity;
+  }
+
+  if (ds_temp != DEVICE_DISCONNECTED_C && !isnan(bme_hum)) {
+    sendTelegramMessage("ESP32 online and monitoring DS18B20 & BME680");
     delay(1000);
-    String msg = "Current readings:\n🌡 Temp: " + String(dht_temp, 1) + "°C\n Humidity: " + String(dht_hum, 1) + "%";
+    String msg = "Current readings:\n Temp (DS18B20): " + String(ds_temp, 1) + "°C\n Humidity (BME680): " + String(bme_hum, 1) + "%";
     sendTelegramMessage(msg);
     delay(1000);
-    checkAndSendAlerts(dht_temp, dht_hum);
+    float dht_temp = dht.readTemperature();
+    checkAndSendAlerts(ds_temp, bme_hum, dht_temp);
   } else {
-    sendTelegramMessage("⚠ Sensor read failed - DHT22 not responding");
+    sendTelegramMessage("⚠ Initial sensor read failed - DS18B20 or BME680 not responding");
   }
 }
 
