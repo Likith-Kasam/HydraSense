@@ -17,7 +17,7 @@ Bill of Materials (BOM) – HydraSense TRL-8 Project
 | 11   | DC-DC Buck Converter| 1        | Bring down to 5V                          | LM2596                 | ₹50                | Sky Electro Tech |
 | 12   | Cooler Box          | 1        | Temperature maintaing chamber             | -                      | ₹309               | Swiggy-Instamart |
 
-Total Cost: ₹2660 (Including Taxes-approx~400)
+Total Cost: ₹2969 (Including Taxes-approx~400)
 
 
 
