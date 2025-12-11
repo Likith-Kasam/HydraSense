@@ -51,9 +51,9 @@ Sensors → MCU Logger → Connectivity Layer → BLYNK Cloud Dashboard → Aler
 - Production‑grade enclosure design  
 
 ## Contributors
-[Likith Kasam - likithkasam2006@gmail.com
-Taral Sanka - taral.sanka@gmail.com
-Vinay Kusumanchi - Kusumanchivinay@gmail.com]
+- Likith Kasam - likithkasam2006@gmail.com
+- Taral Sanka - taral.sanka@gmail.com
+- Vinay Kusumanchi - Kusumanchivinay@gmail.com
 
 ## License
 MIT License - See [LICENSE](LICENSE) file for details
